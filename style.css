@@ -44,7 +44,7 @@ body {
     opacity: 0;
 }
 
-#error-msg-second-line {
+#error-msg-zweite-zeile {
     display: block;
 }
 
@@ -55,11 +55,11 @@ body {
     align-items: center;
 }
 
-.login-form-field::placeholder {
+.login-form-feld::placeholder {
     color: #3a3a3a;
 }
 
-.login-form-field {
+.login-form-feld {
     border: none;
     border-bottom: 1px solid #3a3a3a;
     margin-bottom: 10px;
