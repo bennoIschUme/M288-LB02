@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="javaLoginseite.js"></script>
 </head>
+
 <body>
-hallo
+<main id="main-holder">
+    <h1 id="login-header">Login</h1>
+
+    <div id="login-error-msg-holder">
+        <p id="login-error-msg">Ungültiger Benutzername <span id="error-msg-second-line">und/oder Passwort</span></p>
+    </div>
+
+    <form id="login-form">
+        <input type="text" name="benutzername" id="benutzername-field" class="login-form-field" placeholder="Benutzername">
+        <input type="passwort" name="passwort" id="passwort-feld" class="login-form-feld" placeholder="Passwort">
+        <input type="submit" value="Login" id="login-form-submit">
+    </form>
+
+</main>
 </body>
+
+
+
 </html>
