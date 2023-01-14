@@ -18,7 +18,7 @@
     </div>
 
     <form id="login-form" action="#">
-        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username" onkeydown="validation()">
+        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" onkeydown="validation()">
         <span id="text"></span>
         <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
         <input type="submit" value="Login" id="login-form-submit">
@@ -36,12 +36,12 @@
         if (email.match(pattern)) {
             form.classList.add("valid");
             form.classList.remove("invalid");
-            text.innerHTML = "Email-Adresse gültig";
+            text.innerHTML = "Email gültig";
             text.style.color = "#055902" ;
         } else {
             form.classList.remove("valid");
             form.classList.add("invalid");
-            text.innerHTML = "Bitte geben Sie eine gültige Email-Adresse ein.";
+            text.innerHTML = "Bitte geben Sie eine gültige Email ein.";
             text.style.color = "#730202" ;
         }
         if (email == "") {
