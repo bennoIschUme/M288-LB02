@@ -7,7 +7,7 @@ loginButton.addEventListener("click", (e) => {
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
-    if (username === "user@gmail.com" && password === "web_dev") {
+    if (username === "user@gmail.com" && password === "webdev") {
         window.location = 'home.html', "_blank";
     } else {
         loginErrorMsg.style.opacity = 1;
