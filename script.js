@@ -8,7 +8,7 @@ loginButton.addEventListener("click", (e) => {
     const password = loginForm.password.value;
 
     if (username === "user" && password === "web_dev") {
-        window.open("https://localhost:63342/M288-LB02/home.html", "_blank");
+        window.location = 'home.html', "_blank";
     } else {
         loginErrorMsg.style.opacity = 1;
     }
