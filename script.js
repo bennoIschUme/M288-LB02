@@ -11,8 +11,11 @@ loginButton.addEventListener("click", (e) => {
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
-    if (username === "user" && password === "web_dev") {
+    if (loginSuccessful) {
         window.open("http://localhost:63342/M288-LB02/home.html?_ijt=mjvjg11a1bhnckf3hod65kfmvj&_ij_reload=RELOAD_ON_SAVE", "_blank");
+    }
+
+    if (username === "user" && password === "web_dev") {
     } else {
         loginErrorMsg.style.opacity = 1;
     }
