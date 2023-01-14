@@ -31,22 +31,26 @@
         var form = document.getElementById("login-form");
         var email = document.getElementById("username-field").value;
         var text = document.getElementById("text");
-        var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (email.match(pattern)) {
             form.classList.add("valid");
             form.classList.remove("invalid");
             text.innerHTML = "Email-Adresse gültig";
+            text.style.color = "#055902" ;
         } else {
             form.classList.remove("valid");
             form.classList.add("invalid");
             text.innerHTML = "Bitte geben Sie eine gültige Email-Adresse ein.";
+            text.style.color = "#730202" ;
         }
         if (email == "") {
             form.classList.remove("valid");
             form.classList.remove("invalid");
             text.innerHTML = "";
         }
+
+
     }
 </script>
 

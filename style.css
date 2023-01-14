@@ -82,3 +82,9 @@ body {
     cursor: pointer;
     outline: none;
 }
+#text {
+    font-family: "Bebas Neue";
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
