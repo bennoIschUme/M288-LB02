@@ -15,8 +15,8 @@ body {
 }
 
 #main-holder {
-    width: 30%;
-    height: 90%;
+    width: 50%;
+    height: 70%;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -56,7 +56,6 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
-    margin-bottom: 40px;
 }
 
 .login-form-field::placeholder {
