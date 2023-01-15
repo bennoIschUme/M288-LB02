@@ -23,6 +23,7 @@
         <p id="login-error-msg">Ungültiger Benutzername <span id="error-msg-second-line">und/oder Passwort</span></p>
     </div>
 
+
     <form id="login-form" action="#">
         <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" onkeydown="validation()">
         <span id="text"></span>
@@ -50,11 +51,19 @@
             <i class="far fa-check-circle"></i>
             <span>Shouldn't contain spaces.</span>
         </div>
-        <input type="submit" value="Login" id="login-form-submit">
+        <input disabled type="submit" value="Login" id="login-form-submit">
     </form>
 
 </main>
 </body>
+
+<style>
+    input:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+</style>
 <script type="text/javascript">
     <!-- Passwort Validation -->
     var is_visible = false;
@@ -123,17 +132,20 @@
             form.classList.remove("invalid");
             text.innerHTML = "Email gültig";
             text.style.color = "#055902" ;
+            loginButton.removeAttribute("disabled");
         } else {
             form.classList.remove("valid");
             form.classList.add("invalid");
             text.innerHTML = "Bitte geben Sie eine gültige Email ein.";
             text.style.color = "#730202" ;
+            loginButton.setAttribute("disabled", "true");
         }
         if (email == "") {
             form.classList.remove("valid");
             form.classList.remove("invalid");
             text.innerHTML = "";
         }
+
 
 
     }

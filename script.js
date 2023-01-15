@@ -8,8 +8,12 @@ loginButton.addEventListener("click", (e) => {
     const password = loginForm.password.value;
 
     if (username === "user@gmail.com" && password === "webdev") {
+        loginButton.disabled = false;
         window.location = 'home.html', "_blank";
     } else {
+        loginButton.disabled = true;
         loginErrorMsg.style.opacity = 1;
     }
+
+
 })
