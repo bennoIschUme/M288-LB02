@@ -113,6 +113,15 @@
         } else {
             document.getElementById("check4").style.color = "red";
         }
+        if (document.getElementById("check0").style.color === "green" &&
+            document.getElementById("check1").style.color === "green" &&
+            document.getElementById("check2").style.color === "green" &&
+            document.getElementById("check3").style.color === "green" &&
+            document.getElementById("check4").style.color === "green") {
+            loginButton.disabled = false;
+        } else {
+            loginButton.disabled = true;
+        }
     }
 
     <!-- Email Validation -->
@@ -127,13 +136,11 @@
             form.classList.remove("invalid");
             text.innerHTML = "Email gültig";
             text.style.color = "green" ;
-            loginButton.removeAttribute("disabled");
         } else {
             form.classList.remove("valid");
             form.classList.add("invalid");
             text.innerHTML = "Bitte geben Sie eine gültige Email ein.";
             text.style.color = "red" ;
-            loginButton.setAttribute("disabled", "true");
         }
         if (email == "") {
             form.classList.remove("valid");
