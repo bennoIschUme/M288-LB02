@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loginseite</title>
     <link rel="stylesheet" href="style.css">
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+            crossorigin="anonymous"
+    />
     <script defer src="script.js"></script>
 </head>
 
@@ -20,13 +26,92 @@
     <form id="login-form" action="#">
         <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Email" onkeydown="validation()">
         <span id="text"></span>
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" onInput="check()">
+        <br />
+        <div id="set">
+            <div id="count">Length : 0</div>
+            <i id="see" onclick="see()" class="far fa-eye"></i>
+        </div>
+        <div id="check0">
+            <i class="far fa-check-circle"></i> <span> Length more than 12.</span>
+        </div>
+        <div id="check1">
+            <i class="far fa-check-circle"></i> <span> Length less than 20.</span>
+        </div>
+        <div id="check2">
+            <i class="far fa-check-circle"></i>
+            <span> Contains numerical character.</span>
+        </div>
+        <div id="check3">
+            <i class="far fa-check-circle"></i>
+            <span>Contains special character.</span>
+        </div>
+        <div id="check4">
+            <i class="far fa-check-circle"></i>
+            <span>Shouldn't contain spaces.</span>
+        </div>
         <input type="submit" value="Login" id="login-form-submit">
     </form>
 
 </main>
 </body>
 <script type="text/javascript">
+    <!-- Passwort Validation -->
+    var is_visible = false;
+
+    function see() {
+        var input = document.getElementById("password-field");
+        var see = document.getElementById("see");
+
+        if (is_visible) {
+            input.type = "password";
+            is_visible = false;
+            see.style.color = "gray";
+        } else {
+            input.type = "text";
+            is_visible = true;
+            see.style.color = "#262626";
+        }
+    }
+
+    function check() {
+        var input = document.getElementById("password-field").value;
+
+        input = input.trim();
+        document.getElementById("password-field").value = input;
+        document.getElementById("count").innerText = "Length : " + input.length;
+        if (input.length >= 12) {
+            document.getElementById("check0").style.color = "green";
+        } else {
+            document.getElementById("check0").style.color = "red";
+        }
+
+        if (input.length <= 20) {
+            document.getElementById("check1").style.color = "green";
+        } else {
+            document.getElementById("check1").style.color = "red";
+        }
+
+        if (input.match(/[0-9]/i)) {
+            document.getElementById("check2").style.color = "green";
+        } else {
+            document.getElementById("check2").style.color = "red";
+        }
+
+        if (input.match(/[^A-Za-z0-9-' ']/i)) {
+            document.getElementById("check3").style.color = "green";
+        } else {
+            document.getElementById("check3").style.color = "red";
+        }
+
+        if (input.match(" ")) {
+            document.getElementById("check4").style.color = "red";
+        } else {
+            document.getElementById("check4").style.color = "green";
+        }
+    }
+
+    <!-- Email Validation -->
     function validation() {
         var form = document.getElementById("login-form");
         var email = document.getElementById("username-field").value;
