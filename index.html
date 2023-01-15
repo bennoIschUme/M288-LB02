@@ -90,6 +90,7 @@
         } else {
             document.getElementById("check0").style.color = "red";
         }
+        <!-- Grossbuchstaben -->
         if (input.match(/[a-z]/)) {
             document.getElementById("check1").style.color = "green";
         } else {
@@ -101,7 +102,7 @@
         } else {
             document.getElementById("check2").style.color = "red";
         }
-
+        <!-- Sonderzeichen -->
         if (input.match(/[^A-Za-z0-9-' ']/i)) {
             document.getElementById("check3").style.color = "green";
         } else {
@@ -124,13 +125,13 @@
         }
     }
 
-    <!-- Email Validation -->
+    <!-- Email Validation, Version 1 -->
     function validation() {
         var form = document.getElementById("login-form");
         var email = document.getElementById("username-field").value;
         var text = document.getElementById("text");
         var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        <!-- Zeichen noch Anpassen -->
+        <!-- Zeichen noch Anpassen, -->
         if (email.match(pattern)) {
             form.classList.add("valid");
             form.classList.remove("invalid");
