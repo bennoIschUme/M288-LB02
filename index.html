@@ -34,7 +34,7 @@
             <i class="far fa-check-circle"></i> <span> Length more than 12.</span>
         </div>
         <div id="check1">
-            <i class="far fa-check-circle"></i> <span> Length less than 20.</span>
+            <i class="far fa-check-circle"></i> <span> Less than 20.</span>
         </div>
         <div id="check2">
             <i class="far fa-check-circle"></i>
@@ -46,7 +46,7 @@
         </div>
         <div id="check4">
             <i class="far fa-check-circle"></i>
-            <span>Shouldn't contain spaces.</span>
+            <span>Atleast one Uppercase.</span>
         </div>
         <input type="submit" value="Login" id="login-form-submit">
     </form>
@@ -83,7 +83,6 @@
         } else {
             document.getElementById("check0").style.color = "red";
         }
-
         if (input.length <= 20) {
             document.getElementById("check1").style.color = "green";
         } else {
@@ -101,11 +100,11 @@
         } else {
             document.getElementById("check3").style.color = "red";
         }
-
-        if (input.match(" ")) {
-            document.getElementById("check4").style.color = "red";
-        } else {
+        <!-- Grossbuchstaben -->
+        if (input.match(/[A-Z]/)) {
             document.getElementById("check4").style.color = "green";
+        } else {
+            document.getElementById("check4").style.color = "red";
         }
     }
 
@@ -115,7 +114,7 @@
         var email = document.getElementById("username-field").value;
         var text = document.getElementById("text");
         var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+        <!-- Zeichen noch Anpassen -->
         if (email.match(pattern)) {
             form.classList.add("valid");
             form.classList.remove("invalid");
