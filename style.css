@@ -11,7 +11,10 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
-    background-image: linear-gradient(#042940, #005C53, #D6D58E);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
 }
 
 #main-holder {
