@@ -2,22 +2,27 @@ const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsg = document.getElementById("login-error-msg");
 
-loginButton.addEventListener("click", (e) => {
+// JSON-Daten einbinden, direkt als Javascript
+const data = {
+    "username": "user@gmail.com",
+    "password": "Bzz_Ict12345"
+}
+
+loginForm.addEventListener("submit", e => {
     e.preventDefault();
+
+    // Prüfen von Nutzername und Passwort
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
-    if (username === "user@gmail.com" && password === "Bzz_ict12345") {
-        loginButton.disabled = false;
+    if(data.username === username && data.password === password) {
+        // Anmeldung erfolgreich
         window.location = 'home.html', "_blank";
     } else {
-        loginButton.disabled = true;
+        // Anmeldung fehlgeschlagen
         loginErrorMsg.style.opacity = 1;
     }
-
-
-
-})
+});
 // Passwort Validation -->
 var is_visible = false;
 
@@ -60,7 +65,7 @@ function check() {
         document.getElementById("check2").style.color = "red";
     }
     // Sonderzeichen -->
-    if (input.match(/[^A-Za-z0-9-' ]/i)) {
+    if (input.match(/[^A-Za-z0-9-' ']/i)) {
         document.getElementById("check3").style.color = "green";
     } else {
         document.getElementById("check3").style.color = "red";
@@ -101,7 +106,7 @@ function validation() {
         text.innerHTML = "Bitte geben Sie eine gültige Email ein.";
         text.style.color = "red" ;
     }
-    if (email === "") {
+    if (email == "") {
         form.classList.remove("valid");
         form.classList.remove("invalid");
         text.innerHTML = "";
