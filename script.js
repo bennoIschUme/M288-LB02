@@ -7,7 +7,7 @@ loginButton.addEventListener("click", (e) => {
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
-    if (username === "user@gmail.com" && password === "Bzz_Ict12345") {
+    if (username === "user@gmail.com" && password === "Bzz_ict12345") {
         loginButton.disabled = false;
         window.location = 'home.html', "_blank";
     } else {
