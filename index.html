@@ -115,19 +115,18 @@
         } else {
             document.getElementById("check4").style.color = "red";
         }
+        if (document.getElementById("check0").style.color === "green" &&
+            document.getElementById("check1").style.color === "green" &&
+            document.getElementById("check2").style.color === "green" &&
+            document.getElementById("check3").style.color === "green" &&
+            document.getElementById("check4").style.color === "green" &&
+            document.getElementById("text").style.color === "green") {
+            loginButton.disabled = false;
+        } else {
+            loginButton.disabled = true;
+        }
     }
 
-    <!-- Aktivierung Button, han das us mim Code use gno, das sött nöd i de passwort validierig stah -->
-    if (document.getElementById("check0").style.color === "green" &&
-        document.getElementById("check1").style.color === "green" &&
-        document.getElementById("check2").style.color === "green" &&
-        document.getElementById("check3").style.color === "green" &&
-        document.getElementById("check4").style.color === "green" &&
-        document.getElementById("text").style.color === "green") {
-        loginButton.disabled = false;
-    } else {
-        loginButton.disabled = true;
-    }
     <!-- Email Validation, Version 1 -->
     function validation() {
         var form = document.getElementById("login-form");
