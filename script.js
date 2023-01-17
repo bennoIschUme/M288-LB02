@@ -16,6 +16,7 @@ loginButton.addEventListener("click", (e) => {
     }
 
 
+
 })
 // Passwort Validation -->
 var is_visible = false;
@@ -59,7 +60,7 @@ function check() {
         document.getElementById("check2").style.color = "red";
     }
     // Sonderzeichen -->
-    if (input.match(/[^A-Za-z0-9-' ']/i)) {
+    if (input.match(/[^A-Za-z0-9-' ]/i)) {
         document.getElementById("check3").style.color = "green";
     } else {
         document.getElementById("check3").style.color = "red";
@@ -100,7 +101,7 @@ function validation() {
         text.innerHTML = "Bitte geben Sie eine gültige Email ein.";
         text.style.color = "red" ;
     }
-    if (email == "") {
+    if (email === "") {
         form.classList.remove("valid");
         form.classList.remove("invalid");
         text.innerHTML = "";
