@@ -1,144 +1,156 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Passwort-Tester</title>
+    <title>Homeseite</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homeseite</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://www.solodev.com/assets/password/strength.js"></script>
 </head>
 <body>
-<h1>Passwort-Stärke</h1>
-<p>Testen Sie ihr Passwort.</p>
-
-<!-- Eingabefeld -->
-<form id="myform" action="" method="get" accept-charset="utf-8">
-    <input id="myPassword" type="password" placeholder="Passwort eingeben" name="" value="">
-</form>
-<!-- Eingabefeld -->
+<div class="wrapper">
+    <div class="container">
+        <input type="password" id="password" placeholder="Passwort eingeben..." oninput="strengthChecker()">
+        <div id="strength-bar"></div>
+    </div>
+    <p id="msg"></p>
+</div>
+<!--Script-->
 </body>
 </html>
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans+Condensed:ital,wght@0,300;1,300&display=swap");
-    html{
-        background: linear-gradient(-180deg, #3a3a3a, black);
-        background-size: 300% 300%;
-        font-family: "Bebas Neue";
-        color:white;
+    *,
+    *:before,
+    *:after{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
     }
-    #myform input[type="password"],#myform input[type="text"]{
-        background:transparent;
-        border: 2px solid #46AC84;
-        color: black;
-        font-family: "Open Sans Condensed", sans-serif;
-        font-size:15px;
-        padding: 9px 5px;
-        height: 21px;
-        text-indent: 6px;
-        -webkit-appearance: none;
-        -webkit-border-radius: 6px;
-        -moz-border-radius: 6px;
-        border-radius: 6px;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        -webkit-transition: border .25s linear, color .25s linear;
-        -moz-transition: border .25s linear, color .25s linear;
-        -o-transition: border .25s linear, color .25s linear;
-        transition: border .25s linear, color .25s linear;
-        -webkit-backface-visibility: hidden;
-        width:100%;
+    body{
+        height: 100vh;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 200% 400%;
+        );
     }
-    #myform input[type="password"]:focus,#myform input[type="text"]:focus{
-        outline:0;
+    .wrapper{
+        width: 50%;
+        height: 90%;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 7px;
+        box-shadow: 0px 0px 5px 2px black;
+        margin-left: 25%;
+        margin-top: 3%;
     }
-    #myform{
-        width: 500px;
-        margin: 0 auto;
-        position: relative;
-        margin-bottom:60px;
+    .container {
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
+        padding: 10px;
+        margin-top: 30px;
+        width: 400px;
+        border-radius: 10px;
+        align-items: center;
     }
-    .strength_meter{
-        position: absolute;
-        left: 0px;
-        top: 0px;
+    input,
+    p{
+        font-family: "Bebas Neue"
+
+    }
+    input{
         width: 100%;
-        height: 43px;
-        z-index:-1;
-        border-radius:5px;
-        padding-right:13px;
+        height: 50px;
+        padding: 0 40px 0 20px;
+        position: relative;
+        background-color: #f5f5f5;
+        border: none;
+        outline: none;
+        border-radius: 5px 5px 0 0;
+        font-size: 20px;
     }
-    .button_strength {
-        text-decoration: none;
-        color: #FFF;
-        font-size: 13px;
+    .strength{
+        width: 25%;
+        display: inline-block;
+        position: relative;
+        height: 100%;
+        bottom: 5px;
     }
-    .strength_meter div{
-        width:0%;
-        height: 43px;
-        text-align: right;
-        color: #000;
-        line-height: 43px;
-        -webkit-transition: all .3s ease-in-out;
-        -moz-transition: all .3s ease-in-out;
-        -o-transition: all .3s ease-in-out;
-        -ms-transition: all .3s ease-in-out;
-        transition: all .3s ease-in-out;
-        padding-right: 12px;
-        border-radius:5px;
+    #strength-bar{
+        background-color: #dcdcdc;
+        height: 10px;
+        position: relative;
     }
-    .strength_meter div p{
-        position: absolute;
-        top: 22px;
-        right: 0px;
-        color: #FFF;
-        font-size:13px;
-    }
-    .veryweak{
-        background-color: #FFA0A0;
-        border-color: #F04040!important;
-        width:25%!important;
-    }
-    .weak{
-        background-color: #FFB78C;
-        border-color: #FF853C!important;
-        width:50%!important;
-    }
-    .medium{
-        background-color: #FFEC8B;
-        border-color: #FC0!important;
-        width:75%!important;
-    }
-    .strong{
-        background-color: #C3FF88;
-        border-color: #8DFF1C!important;
-        width:100%!important;
-    }
-    h1{
-        color:white;
-        font-size:50px;
-        text-align:center;
-        padding-top:30px;
-        margin-bottom:20px;
-    }
-    h1 span{
-        font-weight:bold;
-        color:white;
-        opacity:.3;
-    }
-    p {
+    p{
+        width: 100%;
         text-align: center;
+        margin-bottom: 60px;
+        font-size: 50px;
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function($) {
-        $('#myPassword').strength({
-            strengthClass: 'strength',
-            strengthMeterClass: 'strength_meter',
-            strengthButtonClass: 'button_strength',
-            strengthButtonText: 'Passwort anzeigen',
-            strengthButtonTextToggle: 'Passwort verstecken'
-        });
-    });
+    let parameters = {
+        count : false,
+        letters : false,
+        numbers : false,
+        special : false
+    }
+    let strengthBar = document.getElementById("strength-bar");
+    let msg = document.getElementById("msg");
+
+    function strengthChecker(){
+        let password = document.getElementById("password").value;
+
+        parameters.letters = (/[A-Za-z]+/.test(password))?true:false;
+        parameters.numbers = (/[0-9]+/.test(password))?true:false;
+        parameters.special = (/[!\"$%&/()=?@~`\\.\';:+=^*_-]+/.test(password))?true:false;
+        parameters.count = (password.length > 7)?true:false;
+
+        let barLength = Object.values(parameters).filter(value=>value);
+
+        console.log(Object.values(parameters), barLength);
+
+        strengthBar.innerHTML = "";
+        for( let i in barLength){
+            let span = document.createElement("span");
+            span.classList.add("strength");
+            strengthBar.appendChild(span);
+        }
+
+        let spanRef = document.getElementsByClassName("strength");
+        for( let i = 0; i < spanRef.length; i++){
+            switch(spanRef.length - 1){
+                case 0 :
+                    spanRef[i].style.background = "#ff3e36";
+                    msg.textContent = "Dein Passwort ist sehr schwach!";
+                    break;
+                case 1:
+                    spanRef[i].style.background = "#ff691f";
+                    msg.textContent = "Dein Passwort ist schwach";
+                    break;
+                case 2:
+                    spanRef[i].style.background = "#ffda36";
+                    msg.textContent = "Dein Passwort ist okay";
+                    break;
+                case 3:
+                    spanRef[i].style.background = "#0be881";
+                    msg.textContent = "Dein Passwort ist stark!";
+                    break;
+            }
+        }
+    }
+
+
+    function toggle(){
+        let password = document.getElementById("password");
+        let eye = document.getElementById("toggle");
+
+        if(password.getAttribute("type") == "password"){
+            password.setAttribute("type","text");
+            eye.style.color = "#0be881";
+        }
+        else{
+            password.setAttribute("type","password");
+            eye.style.color = "#808080";
+        }
+    }
 </script>
