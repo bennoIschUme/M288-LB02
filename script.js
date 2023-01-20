@@ -2,43 +2,24 @@ const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsg = document.getElementById("login-error-msg");
 
-// JSON-Daten einbinden, direkt als Javascript
-const data = {
-    "username": "user@gmail.com",
-    "password": "Bzz_Ict12345",
+fetch("json-datei.json")
+    .then(response => response.json())
+    .then(data => {
+        loginForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const username = loginForm.username.value;
+            const password = loginForm.password.value;
 
-    "username2": "user2@gmail.com",
-    "password2": "Bzz_Ict54321",
+            for(let i = 0; i < data.users.length; i++) {
+                if(data.users[i].username === username && data.users[i].password === password) {
+                    window.location = 'home.html', "_blank";
+                    return;
+                }
+            }
 
-    "username3": "user3@gmail.com",
-    "password3": "Bzz_Ict67890",
-
-    "username4": "user4@gmail.com",
-    "password4": "Bzz_Ict09876",
-
-    "username5": "user5@gmail.com",
-    "password5": "Bzz_Ict246810",
-}
-
-loginForm.addEventListener("submit", e => {
-    e.preventDefault();
-
-    // Prüfen von Nutzername und Passwort
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
-
-    if(data.username === username && data.password === password||
-        data.username2 === username && data.password2 === password||
-        data.username3 === username && data.password3 === password||
-        data.username4 === username && data.password4 === password||
-        data.username5 === username && data.password5 === password) {
-        // Anmeldung erfolgreich
-        window.location = 'home.html', "_blank";
-    } else {
-        // Anmeldung fehlgeschlagen
-        loginErrorMsg.style.opacity = 1;
-    }
-});
+            loginErrorMsg.style.opacity = 1;
+        });
+    });
 // Passwort Validation -->
 var is_visible = false;
 

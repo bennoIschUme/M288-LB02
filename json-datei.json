@@ -1,4 +1,9 @@
 {
-  "username": "user@gmail.com",
-  "password": "Bzz_Ict12345"
+  "users": [
+    { "username": "user@gmail.com", "password": "Bzz_Ict12345" },
+    { "username": "user2@gmail.com", "password": "Bzz_Ict54321" },
+    { "username": "user3@gmail.com", "password": "Bzz_Ict67890" },
+    { "username": "user4@gmail.com", "password": "Bzz_Ict09876" },
+    { "username": "user5@gmail.com", "password": "Bzz_Ict246810" }
+  ]
 }
